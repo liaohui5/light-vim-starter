@@ -10,9 +10,36 @@ if ! command_exists "curl"; then
   exit 1
 fi
 
-# copy vimrc to user home directory
-cp -i ./.vimrc ~/.vimrc
 
-# install plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# download file form github
+function use_github_install() {
+  # copy vimrc to user home directory
+  cp -i ./.vimrc ~/.vimrc
+
+  # install plug
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
+
+# download file from gitee
+function use_gitee_install() {
+  # copy vimrc to user home directory
+  cp -i ./.gitee-vimrc ~/.vimrc
+
+  # install plug
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://gitee.com/liaohui5/vim-plug/raw/master/plug.vim
+  # gitee easymotion: https://gitee.com/liaohui5/vim-easymotion
+}
+
+echo -e "Which website do you want to use to download? \n 1:github \n 2:gitee"
+
+read siteId
+
+if [[ siteId -eq '1' ]]; then
+  use_github_install
+elif [[ siteId -eq '2' ]]; then
+  use_gitee_install
+else
+    echo "only support github and gitee"
+fi
