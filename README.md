@@ -11,6 +11,8 @@
 
 ```sh
 git clone https://github.com/liaohui5/light-vim-starter && cd light-vim-starter
+# or
+# git clone https://gitee.com/liaohui5/light-vim-starter && cd light-vim-starter
 
 chmod +x
 
