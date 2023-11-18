@@ -20,7 +20,7 @@ set fileencoding=utf-8    " 文件编码格式
 set tabstop=4             " tab 键对应的空格数量
 set expandtab             " 将 tab 按键自动转空格
 set softtabstop=4         " 一个 tab 转换未多少个空格(tab 转空格功能开启后)
-set laststatus=0          " 状态栏(0:不显示 1:多窗口时显示 2 一直显示)
+set laststatus=2          " 状态栏(0:不显示 1:多窗口时显示 2 一直显示)
 set hlsearch              " 高亮显示搜索结果
 set nobackup              " 不要创建备份文件(这个操作应该自己来完成,养成习惯)
 set noswapfile            " 不创建交换文件
@@ -30,11 +30,18 @@ set history=1000          " 操作历史个数上限
 set termguicolors         " 终端使用 GUI 颜色
 set t_Co=256              " 设置终端类型为256色(如果终端支持的话)
 set clipboard+=unnamed    " 使用系统剪切板
+set updatetime=100        " 更新间隔时间(ms), 比如按下 <Leader> 键后没有再
+set timeoutlen=300        " 按其他键多久后自动取消 <Leader>, 不需要太快否则会频繁触发 which-key
 syntax on                 " 开启语法高亮
 syntax enable             " 开启语法高亮
 filetype indent on        " 开启根据文件类型来处理缩进功能
 let g:loaded_matchparen=1 " 不要自动高亮匹配的括号
 
+colorscheme slate         " 设置当前主题
+set cursorline            " 高亮当前行
+hi CursorLine   cterm=NONE ctermfg=NONE ctermbg=black gui=NONE guifg=NONE guibg=#151719
+hi CursorLineNr cterm=NONE ctermfg=NONE ctermbg=black gui=NONE guifg=NONE guibg=#222528
+hi StatusLine   cterm=NONE ctermfg=NONE ctermbg=black gui=NONE guifg=NONE guibg=#151719
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ██████  ██      ██    ██  ██████  ██ ███    ██ ███████ 
 " ██   ██ ██      ██    ██ ██       ██ ████   ██ ██      
