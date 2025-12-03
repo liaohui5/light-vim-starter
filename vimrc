@@ -10,6 +10,7 @@ set nocompatible          " 不与 vi 兼容, 使用 VIM 自己的操作命令
 set encoding=utf-8        " 文件编码格式
 set fileencoding=utf-8    " 文件编码格式
 set history=1000          " 操作历史个数上限
+set clipboard^=unnamed,unnamedplus " 使用系统剪切板(兼容写法)
 
 " Display settings
 set number                " 显示行号
@@ -85,13 +86,6 @@ hi StatusLine   cterm=NONE ctermfg=NONE ctermbg=black gui=NONE guifg=NONE guibg=
 set foldmethod=indent     " 使用缩进来确定折叠
 set foldlevel=99          " 不自动折叠
 set foldenable            " 启用折叠
-
-" 处理剪贴板(如果不是 SSH, 使用系统剪切板)
-if empty($SSH_CONNECTION)
-  set clipboard=unnamedplus
-else
-  set clipboard=
-endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ██████  ██      ██    ██  ██████  ██ ███    ██ ███████ 
 " ██   ██ ██      ██    ██ ██       ██ ████   ██ ██      
@@ -115,9 +109,6 @@ call plug#end()
 let g:mapleader = "\<Space>"
 nnoremap <Space> <Leader>
 
-" $ 不会包括换行符
-noremap $ $h
-
 " p 仅粘贴, 而不是粘贴并复制
 nnoremap p "+p
 vnoremap p "_c<C-r><C-o>+<ESC>
@@ -138,6 +129,13 @@ nnoremap <C-Down>  <CMD>resize -2<CR>
 nnoremap <C-Left>  <CMD>vertical resize -2<CR>
 nnoremap <C-Right> <CMD>vertical resize +2<CR>
 
+" 上/下一个 tab
+nnoremap <S-h> <CMD>tabprev<CR>
+nnoremap <S-l> <CMD>tabnext<CR>
+
+" 打开一个 tab
+nnoremap <C-p> :tabedit<Space>
+
 " 高亮当前光标下的单词
 nnoremap gw *N
 vnoremap gw *N
@@ -148,6 +146,10 @@ nnoremap <ESC> <CMD>nohl<CR><ESC>
 " 缩进
 vnoremap < <gv
 vnoremap > >gv
+
+" 上/下 选择代码自动完成
+inoremap <C-j> <C-n>
+inoremap <C-k> <C-p>
 
 " 退出
 nnoremap <C-q> <CMD>quitall<CR>
