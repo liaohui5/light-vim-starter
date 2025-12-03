@@ -193,3 +193,18 @@ augroup show_listchars
   autocmd ModeChanged *:v* set list
   autocmd ModeChanged *:n* set nolist
 augroup END
+
+"########################################################################
+" 光标形状设置 - 不同模式下光标形状不同
+"########################################################################
+if !has('nvim')
+  " 确保不是在 neovim 中运行
+  let &t_SI = "\<Esc>[6 q"  " 插入模式 - 竖线光标
+  let &t_SR = "\<Esc>[4 q"  " 替换模式 - 下划线光标
+  let &t_EI = "\<Esc>[2 q"  " 普通模式 - 块状光标
+  
+  " 对于某些终端的兼容性设置
+  let &t_SI .= "\<Esc>[?25h"  " 显示光标
+  let &t_SR .= "\<Esc>[?25h"  " 显示光标
+  let &t_EI .= "\<Esc>[?25h"  " 显示光标
+endif
