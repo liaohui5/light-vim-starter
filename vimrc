@@ -46,6 +46,12 @@ set nobackup              " 不要创建备份文件
 set noswapfile            " 不创建交换文件
 set undofile              " 保留撤销历史
 set undolevels=10000      " 撤销历史上限
+set undodir=~/.vim/undo   " 指定撤销文件目录（建议使用隐藏目录）
+
+" 自动创建目录(vim 8.2+ 支持)
+if !isdirectory(expand('~/.vim/undo'))
+  call mkdir(expand('~/.vim/undo'), 'p', 0700)
+endif
 
 " Completion and popup
 set completeopt=menu,menuone,noselect
