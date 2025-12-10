@@ -196,11 +196,11 @@ endif
 "########################################################################
 " 列表字符显示控制: 在选择模式显示, 在普通模式隐藏
 "########################################################################
-augroup show_listchars
-  autocmd!
-  autocmd ModeChanged *:v* set list
-  autocmd ModeChanged *:n* set nolist
-augroup END
+" augroup show_listchars
+"   autocmd!
+"   autocmd ModeChanged *:v* set list
+"   autocmd ModeChanged *:n* set nolist
+" augroup END
 
 "########################################################################
 " 光标形状设置 - 不同模式下光标形状不同
