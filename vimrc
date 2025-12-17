@@ -140,7 +140,7 @@ nnoremap <S-h> <CMD>tabprev<CR>
 nnoremap <S-l> <CMD>tabnext<CR>
 
 " 打开一个 tab
-nnoremap <C-p> :tabedit<Space>
+nnoremap <Space><Space> :tabedit<Space>
 
 " 高亮当前光标下的单词
 nnoremap gw *N
@@ -163,6 +163,7 @@ nnoremap <C-q> <CMD>quitall<CR>
 "########################################################################
 " https://github.com/easymotion/vim-easymotion
 "########################################################################
+let g:EasyMotion_leader_key = '<Leader>' 
 let g:EasyMotion_keys_is_bind = 0
 function! BindEasyMotionKeys()
   if exists('g:EasyMotion_loaded') && g:EasyMotion_keys_is_bind == 0
