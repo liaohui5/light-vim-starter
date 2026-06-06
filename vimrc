@@ -72,6 +72,10 @@ set smoothscroll          " 平滑滚动
 set updatetime=200        " 更新时间(ms)
 set timeoutlen=300        " 按键超时时间(ms)
 
+" Global options
+let g:netrw_dirhistmax = 0
+let g:netrw_dirhistfile = ''  " 禁止 netrw 生成文件记录
+
 " Syntax and filetype
 syntax enable             " 开启语法高亮
 filetype indent on        " 开启根据文件类型来处理缩进功能
